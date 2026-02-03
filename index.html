@@ -4,33 +4,76 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Миний валентин болох уу?</title>
-    <link rel="stylesheet" href="dtyle.css" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        display: flex; justify-content: center; align-items: center;
+        min-height: 100vh; background-color: #ffdeeb;
+        font-family: 'Segoe UI', sans-serif; overflow: hidden;
+        touch-action: manipulation;
+      }
+      .container {
+        text-align: center; background: rgba(255, 255, 255, 0.9);
+        padding: 2rem; border-radius: 20px; width: 90%; max-width: 400px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1); position: relative; z-index: 1;
+      }
+      .cute-gif { width: 100%; max-width: 250px; border-radius: 15px; margin-bottom: 1.5rem; }
+      h1 { color: #d81b60; font-size: 1.5rem; margin-bottom: 2rem; }
+      .buttons { 
+        display: flex; justify-content: center; align-items: center; 
+        gap: 15px; min-height: 100px; position: relative; 
+      }
+      button {
+        padding: 12px 25px; font-size: 1.1rem; font-weight: bold;
+        border: none; border-radius: 50px; cursor: pointer;
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      #yesBtn { background-color: #ff4d6d; color: white; position: relative; z-index: 9999; }
+      #noBtn { background-color: #adb5bd; color: white; position: relative; z-index: 999; }
+      .success-message { display: none; }
+    </style>
   </head>
   <body>
-    <div id="quiz">
+    <div id="quiz" class="container">
       <div class="gif-container">
-        <img
-          id="mainGif"
-          class="cute-gif"
-          src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3bmZqZzR3eXN6ZzR3eXN6ZzR3eXN6ZzR3eXN6ZzR3eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif"
-        />
+        <img id="mainGif" class="cute-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3bmZqZzR3eXN6ZzR3eXN6ZzR3eXN6ZzR3eXN6ZzR3eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" />
       </div>
       <h1 id="question">Чи миний Валентин болох уу? 👉👈</h1>
-
       <div class="buttons">
         <button id="yesBtn" onclick="celebrate()">Тийм</button>
-        <button id="noBtn" onclick="handleNo()">Үгүй</button>
+        <button id="noBtn" onmouseover="handleNo()" onclick="handleNo()">Үгүй</button>
       </div>
     </div>
 
-    <div id="result" class="success-message">
-      <img
-        class="cute-gif"
-        src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjd1Y3VhN2cwdTV4ZzNqbWo4d2VzcjlpZjU4cXN3ZThrbDJxMXpvMyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5nd4qqDx9Qy7FWt78B/giphy.gif"
-        alt="happy cat"
-      />
+    <div id="result" class="container success-message">
+      <img class="cute-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjd1Y3VhN2cwdTV4ZzNqbWo4d2VzcjlpZjU4cXN3ZThrbDJxMXpvMyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5nd4qqDx9Qy7FWt78B/giphy.gif" alt="happy cat" />
       <h1>Яаааая! Хайртай шүү! ❤️🥰</h1>
     </div>
-    <script src="in.js"></script>
+
+    <script>
+      let noClicks = 0;
+      function handleNo() {
+        noClicks++;
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        
+        // Тийм товчийг томруулах
+        let scale = 1 + (noClicks * 0.4);
+        yesBtn.style.transform = `scale(${scale})`;
+
+        // Үгүй товчийг зугтаалгах
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+        noBtn.style.position = 'fixed';
+        noBtn.style.left = x + 'px';
+        noBtn.style.top = y + 'px';
+      }
+
+      function celebrate() {
+        document.getElementById('quiz').style.display = 'none';
+        document.getElementById('result').style.display = 'block';
+        document.body.style.backgroundColor = "#ffc1e3";
+      }
+    </script>
   </body>
 </html>

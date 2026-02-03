@@ -1,38 +1,22 @@
-let yesSize = 1.2;
-        let noClicks = 0;
+let noClicks = 0;
+function handleNo() {
+  noClicks++;
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
 
-        const messages = [
-            "Итгэлтэй байна уу?",
-            "Дахиад сайн бодоорой...",
-            "Гуйж байна шүү дээ 🥺",
-            "Намайг ингээд хаях гэж үү?",
-            "Зүрх минь өвдөж байна 💔",
-            "За яахав, би асуусаар л байх болно!"
-        ];
+  let scale = 1 + noClicks * 0.4;
+  yesBtn.style.transform = `scale(${scale})`;
 
-        function handleNo() {
-            noClicks++;
-            const yesBtn = document.getElementById('yesBtn');
-            const noBtn = document.getElementById('noBtn');
-            const question = document.getElementById('question');
-            yesSize += 0.5;
-            yesBtn.style.fontSize = yesSize + "rem";
-            yesBtn.style.padding = (15 + noClicks * 10) + "px " + (30 + noClicks * 20) + "px";
 
-            if (noClicks < messages.length) {
-                question.innerText = messages[noClicks];
-            } else {
-                question.innerText = "Одоо зүгээр Тийм гээч дээ! 😂";
-            }
+  const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+  const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+  noBtn.style.position = "fixed";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
 
-            let currentNoSize = 1.2 - (noClicks * 0.1);
-            if (currentNoSize > 0.5) {
-                noBtn.style.fontSize = currentNoSize + "rem";
-            }
-        }
-
-        function celebrate() {
-            document.getElementById('quiz').style.display = 'none';
-            document.getElementById('result').style.display = 'block';
-            document.body.style.backgroundColor = "#ffc1e3";
-        }
+function celebrate() {
+  document.getElementById("quiz").style.display = "none";
+  document.getElementById("result").style.display = "block";
+  document.body.style.backgroundColor = "#ffc1e3";
+}

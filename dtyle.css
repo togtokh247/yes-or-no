@@ -1,81 +1,69 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #ffdeeb;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffdeeb;
+  font-family: "Segoe UI", sans-serif;
+  overflow: hidden;
+  touch-action: manipulation;
 }
-
 .container {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    width: 90%;
-    max-width: 400px;
-    transition: all 0.5s ease;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
 }
-
-.gif-display {
-    width: 100%;
-    max-width: 250px;
-    height: auto;
-    border-radius: 15px;
-    margin-bottom: 1.5rem;
+.cute-gif {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
 }
-
 h1 {
-    color: #d81b60;
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    line-height: 1.4;
+  color: #d81b60;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
 }
-
-.btn-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    min-height: 60px;
-    position: relative;
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  min-height: 100px;
+  position: relative;
 }
-
-.btn {
-    padding: 12px 25px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: transform 0.2s, background-color 0.3s;
+button {
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
 #yesBtn {
-    background-color: #ff4d6d;
-    color: white;
-    z-index: 100; 
+  background-color: #ff4d6d;
+  color: white;
+  position: relative;
+  z-index: 9999;
 }
-
 #noBtn {
-    background-color: #adb5bd;
-    color: white;
-    white-space: nowrap;
+  background-color: #adb5bd;
+  color: white;
+  position: relative;
+  z-index: 999;
 }
-
-#result {
-    display: none;
-}
-
-@media (max-width: 350px) {
-    h1 { font-size: 1.2rem; }
-    .btn { padding: 10px 20px; font-size: 1rem; }
+.success-message {
+  display: none;
 }
