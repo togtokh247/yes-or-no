@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fce4ec;
+  font-family: "Arial", sans-serif;
+  text-align: center;
+}
+
+.gif-container img {
+  width: 200px;
+  border-radius: 15px;
+}
+
+h1 {
+  color: #d81b60;
+  font-size: 2rem;
+  margin: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#yesBtn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#noBtn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.success-message {
+  display: none;
+}
+
+.success-message h1 {
+  font-size: 3rem;
+  color: #ff4081;
+}
